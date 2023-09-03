@@ -229,12 +229,12 @@ function displayDetails(mealDetails) {
 
   for (let i = 0; i < mealDetails.length; i++) {
      box = `
-  <div class="col-md-4 ms-4">
+  <div class="col-md-4 ">
   <img src="${mealDetails[i].strMealThumb}" class="w-100 rounded-3" alt="">
   <p class=" fs-3 fw-bolder">${mealDetails[i].strCategory}</p>
   </div> 
   
-  <div class="col-md-8 ms-4">
+  <div class="col-md-8 ">
   <h2>Instructions</h2>
   <p >${mealDetails[i].strInstructions}</p>
       <p class=" fs-4 fw-bolder">Area : ${mealDetails[i].strArea}</p>
@@ -341,12 +341,12 @@ for (let i = 1; i <= 20; i++) {
 let tags = mealDetails.strTags && mealDetails.strTags.trim() !== '' ? `<li class="alert alert-info p">${mealDetails.strTags}</li>` : '';
 
 const box = `
-<div class="col-md-4 ms-4">
+<div class="col-md-4 ">
     <img src="${mealDetails.strMealThumb}" class="w-100 rounded-3" alt="">
     <p class="fs-3 fw-bolder">${mealDetails.strCategory}</p>
 </div> 
 
-<div class="col-md-8 ms-4">
+<div class="col-md-8 ">
     <h2>Instructions</h2>
     <p>${mealDetails.strInstructions}</p>
     <p class="fs-4 fw-bolder">Area: ${mealDetails.strArea}</p>
@@ -486,12 +486,12 @@ let tags = mealDetails.strTags && mealDetails.strTags.trim() !== '' ? `<li class
 
 for (let i = 0; i < mealDetails.length; i++) {
    box = `
-<div class="col-md-4 ms-4">
+<div class="col-md-4 ">
 <img src="${mealDetails[i].strMealThumb}" class="w-100 rounded-3" alt="">
 <p class=" fs-3 fw-bolder">${mealDetails[i].strCategory}</p>
 </div> 
 
-<div class="col-md-8 ms-4">
+<div class="col-md-8 ">
 <h2>Instructions</h2>
 <p >${mealDetails[i].strInstructions}</p>
     <p class=" fs-4 fw-bolder">Area : ${mealDetails[i].strArea}</p>
@@ -615,12 +615,12 @@ let box = "";
 
 for (let i = 0; i < mealDetails.length; i++) {
    box = `
-<div class="col-md-4 ms-4">
+<div class="col-md-4 ">
 <img src="${mealDetails[i].strMealThumb}" class="w-100 rounded-3" alt="">
 <p class=" fs-3 fw-bolder">${mealDetails[i].strCategory}</p>
 </div> 
 
-<div class="col-md-8 ms-4">
+<div class="col-md-8 ">
 <h2>Instructions</h2>
 <p >${mealDetails[i].strInstructions}</p>
     <p class=" fs-4 fw-bolder">Area : ${mealDetails[i].strArea}</p>
