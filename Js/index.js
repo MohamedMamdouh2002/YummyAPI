@@ -8,7 +8,6 @@ $(document).ready(function () {
   let sideOpen=document.querySelector(".open")
   let sideClose=document.querySelector(".close")
   let sideBarWidth = $(".sideBarLeft").innerWidth()
-    // $(".sideBarLeft .text").slideToggle();
     
     
     
@@ -22,8 +21,7 @@ $(document).ready(function () {
       $(".text p").eq(i).animate({top: 0}, (i + 5) * 100)
   }
     
-      // $(".sideBarLeft .text").slideUp(2000)
-      // $(".sideBarLeft .cap").slideUp(2000)
+     
     
     })
     sideClose.addEventListener("click",function(){
@@ -31,7 +29,6 @@ $(document).ready(function () {
     sideOpen.classList.replace("d-none","d-block")
     $(".sideBar").animate({left:-sideBarWidth},500)
     $(".text p").animate({top: 300}, 500)
-    // $(".sideBarLeft .text").slideUp(200)
 
   })
   
@@ -42,7 +39,6 @@ $(document).ready(function () {
           for (let i = 0; i < 5; i++) {
             $(".text p").eq(i).animate({top: 0}, (i + 5) * 100)
         }
-          // $(".text p").eq[i].animate({top:"0px"},{i + 5},100)
         })
       })
       
@@ -52,49 +48,55 @@ $(document).ready(function () {
 
         //-------------------------------------
         document.querySelector(".category1").addEventListener("click", function() {
-          // $(".loading").fadeIn(100)
-          
-          displayCategory();
-          $("#input").css("display","none")
+          $(".loading").fadeIn(300,function(){
 
-          // $(".loading").fadeOut(300)
-          sideClose.classList.replace("d-block","d-none")
-          sideOpen.classList.replace("d-none","d-block")
-          $(".sideBar").animate({left:-sideBarWidth},500)
+            
+          
+            
+            displayCategory();
+            $("#input").css("display","none")
+            
+            $(".loading").fadeOut(300)
+            sideClose.classList.replace("d-block","d-none")
+            sideOpen.classList.replace("d-none","d-block")
+            $(".sideBar").animate({left:-sideBarWidth},500)
+        })
           
         });
   
         document.querySelector(".Area1").addEventListener("click", function() {
-          // $(".loading").fadeIn()
-          
-          displayArea();
-          // $(".loading").fadeOut(300)
-          $("#input").css("display","none")
+          $(".loading").fadeIn(200,function(){
 
-          sideClose.classList.replace("d-block","d-none")
-          sideOpen.classList.replace("d-none","d-block")
-          $(".sideBar").animate({left:-sideBarWidth},500)
+            
+            displayArea();
+            $(".loading").fadeOut(300)
+            $("#input").css("display","none")
+            
+            sideClose.classList.replace("d-block","d-none")
+            sideOpen.classList.replace("d-none","d-block")
+            $(".sideBar").animate({left:-sideBarWidth},500)
+          })
           
        
         });
 
         document.querySelector(".Ingredient1").addEventListener("click", function() {
-          
-          // $(".loading").fadeIn(100)
-          displayIngredient(Ing)
+          $(".loading").fadeIn(100,function(){
+
+            
+            displayIngredient(Ing)
         $("#input").css("display","none")
 
-          // $(".loading").fadeOut(300)
-
+          $(".loading").fadeOut(300)
+          
           sideClose.classList.replace("d-block","d-none")
           sideOpen.classList.replace("d-none","d-block")
           $(".sideBar").animate({left:-sideBarWidth},500)
           
+        })
        
         });
         document.querySelector(".search1").addEventListener("click", function() {
-          // $(".loading").fadeIn(100)
-          
           displaySearchName();
           document.getElementById("input1").addEventListener("keyup", function(e) {
             getMeal(e.target.value);
@@ -104,7 +106,6 @@ $(document).ready(function () {
           document.getElementById("input2").addEventListener("keyup", function(e) {
             getSearchLetter(e.target.value);
           });
-          // $(".loading").fadeOut(300)
           sideClose.classList.replace("d-block","d-none")
           sideOpen.classList.replace("d-none","d-block")
           $(".sideBar").animate({left:-sideBarWidth},500)
@@ -141,7 +142,7 @@ $(document).ready(function () {
    
       box+=`
       <div class="col-md-3 ">
-        <div class="position-relative innerCol  border bg-light  bg-opacity-50 border-white-50 rounded-4">
+        <div class="position-relative ms-5 innerCol  border bg-light  bg-opacity-50 border-white-50 rounded-4">
             <div class="  rounded-4">
                 <img src="${cat[i].strCategoryThumb}"  class="w-100  rounded-4  " alt="">
                 <div class="layer rounded-4 position-absolute ">
@@ -163,7 +164,7 @@ $(document).ready(function () {
     });
    
   }
-//============================= start Category=======================      
+//============================= end Category=======================      
 
   //================= start CategoryDetails====================
   let m=[];
@@ -173,7 +174,6 @@ $(document).ready(function () {
       let apiResponse2 = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${index}`);
       let finalRlt2=  await apiResponse2.json();
       m=finalRlt2.meals
-      console.log(m);
       displayCategoryDetails(finalRlt2.meals)
   
   }
@@ -187,7 +187,7 @@ function displayCategoryDetails() {
   for (let i = 0; i < m.length; i++) {
     box += `
       <div class="col-md-3 rounded-4">
-        <div class="position-relative innerCol  rounded-4" >
+        <div class="position-relative ms-5 innerCol  rounded-4" >
           <div class="rounded-4">
             <img src="${m[i].strMealThumb}" class="w-100 rounded-4"  alt="">
           <div>
@@ -206,7 +206,6 @@ function displayCategoryDetails() {
   document.querySelectorAll(".layer").forEach(function(element) {
     element.addEventListener("click", function(e) {
       getDetails(e.target.getAttribute("mealId"));
-      // console.log(getCatDetails(m[index]));
     });
   });
   
@@ -230,12 +229,12 @@ function displayDetails(mealDetails) {
 
   for (let i = 0; i < mealDetails.length; i++) {
      box = `
-  <div class="col-md-4">
+  <div class="col-md-4 ms-4">
   <img src="${mealDetails[i].strMealThumb}" class="w-100 rounded-3" alt="">
   <p class=" fs-3 fw-bolder">${mealDetails[i].strCategory}</p>
   </div> 
   
-  <div class="col-md-8">
+  <div class="col-md-8 ms-4">
   <h2>Instructions</h2>
   <p >${mealDetails[i].strInstructions}</p>
       <p class=" fs-4 fw-bolder">Area : ${mealDetails[i].strArea}</p>
@@ -285,7 +284,7 @@ async function getMeal(name='') {
     displayMeal(meal)
   }
   else{
-    rowData.innerHTML="PLEASE"; 
+    rowData.innerHTML="Please enter a valid food name"; 
   }
 
 }
@@ -299,7 +298,7 @@ function displayMeal() {
   for (let i = 0; i < meal.length; i++) {
     box += `
     <div class="col-md-3 ">
-    <div class="position-relative innerCol">
+    <div class="position-relative innerCol ms-4">
     <div class="  rounded-4 ">
             <img src="${meal[i].strMealThumb}"  class="w-100  rounded-4" alt="">
             <div class="layer rounded-4 position-absolute">
@@ -326,7 +325,6 @@ async function displayMealDetails(index) {
   let apiResponse2 = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`);
   let finalRlt2 = await apiResponse2.json();
   let mealDetails = finalRlt2.meals[0];
-  console.log(mealDetails);
   let rowData = document.querySelector(".rowData");
   
   let ingredients = '';
@@ -343,12 +341,12 @@ for (let i = 1; i <= 20; i++) {
 let tags = mealDetails.strTags && mealDetails.strTags.trim() !== '' ? `<li class="alert alert-info p">${mealDetails.strTags}</li>` : '';
 
 const box = `
-<div class="col-md-4">
+<div class="col-md-4 ms-4">
     <img src="${mealDetails.strMealThumb}" class="w-100 rounded-3" alt="">
     <p class="fs-3 fw-bolder">${mealDetails.strCategory}</p>
 </div> 
 
-<div class="col-md-8">
+<div class="col-md-8 ms-4">
     <h2>Instructions</h2>
     <p>${mealDetails.strInstructions}</p>
     <p class="fs-4 fw-bolder">Area: ${mealDetails.strArea}</p>
@@ -384,8 +382,7 @@ async function getArea(){
 `)
 let finalRlt=await apiResponse.json()
 area=finalRlt.meals
-  // console.log(area);
-  // displayArea()
+  
 }
 getArea();
 
@@ -395,7 +392,7 @@ function displayArea(){
   
   for (let i = 0; i < area.length; i++) {
     box += `
-    <div class="col-md-3 text-white text-center ">
+    <div class="col-md-3 text-white text-center ms-4 ">
     
     <i class="fa-solid fa-house-laptop fa-4x" Area="${area[i].strArea} "></i>
     
@@ -424,7 +421,6 @@ async function getAreaDetails(index) {
   `);
   let finalRlt2=  await apiResponse2.json();
   // m=finalRlt2.meals
-  console.log(finalRlt2);
   displayAreaDetails(finalRlt2.meals)
 }
 
@@ -437,7 +433,7 @@ let box = "";
 for (let i = 0; i < v.length; i++) {
   box += `
     <div class="col-md-3 rounded-4">
-      <div class="position-relative innerCol rounded-4 "  >
+      <div class="position-relative innerCol rounded-4  ms-4"  >
         <div class="rounded-4">
           <img src="${v[i].strMealThumb}" class="w-100 rounded-4"  alt="">
           <div class="layer rounded-4 position-absolute"areaId="${v[i].idMeal}" >
@@ -490,12 +486,12 @@ let tags = mealDetails.strTags && mealDetails.strTags.trim() !== '' ? `<li class
 
 for (let i = 0; i < mealDetails.length; i++) {
    box = `
-<div class="col-md-4">
+<div class="col-md-4 ms-4">
 <img src="${mealDetails[i].strMealThumb}" class="w-100 rounded-3" alt="">
 <p class=" fs-3 fw-bolder">${mealDetails[i].strCategory}</p>
 </div> 
 
-<div class="col-md-8">
+<div class="col-md-8 ms-4">
 <h2>Instructions</h2>
 <p >${mealDetails[i].strInstructions}</p>
     <p class=" fs-4 fw-bolder">Area : ${mealDetails[i].strArea}</p>
@@ -548,7 +544,7 @@ function displayIngredient(){
 
   for (let i = 0; i <20; i++) {
     box += `
-      <div class="col-md-3 text-white text-center  gy-1 gx-2 border border-secondary pt-3">
+      <div class="col-md-3 text-white text-center  gy-1 gx-2 border border-secondary pt-3 ms-4">
       
             <i class="fa-solid fa-drumstick-bite fa-4x"IngD="${Ing[i].strIngredient}" ></i>
 
@@ -570,7 +566,6 @@ async function getIngDetails(index) {
   let apiResponse2 = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${index}
   `);
   let finalRlt2=  await apiResponse2.json();
-  console.log(finalRlt2);
   displayIngDetails(finalRlt2.meals)
 }
 
@@ -583,7 +578,7 @@ let box = "";
 for (let i = 0; i < v.length; i++) {
   box += `
     <div class="col-md-3 rounded-4">
-      <div class="position-relative innerCol rounded-4 "  >
+      <div class="position-relative innerCol rounded-4 ms-4"  >
         <div class="rounded-4">
           <img src="${v[i].strMealThumb}" class="w-100 rounded-4"  alt="">
           <div class="layer rounded-4 position-absolute" >
@@ -608,7 +603,7 @@ document.querySelectorAll(".layer").forEach(function(element) {
 async function IngDetails(index) {
   let apiResponse2 = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${index}`);
   let finalRlt2 = await apiResponse2.json();
-console.log(finalRlt2);
+(finalRlt2);
   displayIngD(finalRlt2.meals)
 }
 
@@ -620,12 +615,12 @@ let box = "";
 
 for (let i = 0; i < mealDetails.length; i++) {
    box = `
-<div class="col-md-4">
+<div class="col-md-4 ms-4">
 <img src="${mealDetails[i].strMealThumb}" class="w-100 rounded-3" alt="">
 <p class=" fs-3 fw-bolder">${mealDetails[i].strCategory}</p>
 </div> 
 
-<div class="col-md-8">
+<div class="col-md-8 ms-4">
 <h2>Instructions</h2>
 <p >${mealDetails[i].strInstructions}</p>
     <p class=" fs-4 fw-bolder">Area : ${mealDetails[i].strArea}</p>
@@ -670,7 +665,7 @@ rowData.innerHTML = box;
     let rowData = document.querySelector(".rowData");
     box=`
    
-    <div class="row   g-4  pt-4  mt-5 ">
+    <div class="row   g-4  pt-4  mt-5 ms-3">
     <div class="col-md-6 ">
 
             <input type="text" name=""class="form-control" placeholder="Enter Your Name" id="Name">
@@ -928,12 +923,11 @@ let finalRlt=await apiResponse.json()
 meal=finalRlt.meals
 let rowData = document.getElementById("Body");
 
-  console.log(meal);
+  
   if(meal!=null){
     displaySearchLL(meal)
   }
-  else{
-  }
+  
 }
 
 function displaySearchName(){
@@ -943,7 +937,7 @@ function displaySearchName(){
     box = `
 
     <div class="container  p-5">
-        <div class="row g-4  pt-2 mt-2 searchInput " id="input">
+        <div class="row g-4  pt-2 mt-2 searchInput ms-3" id="input">
           <div class="col-md-6 d-flex gap-2">
          
               <input type="text" id="input1" class="form-control  text-white bg-black" placeholder="Search by name">
@@ -952,7 +946,7 @@ function displaySearchName(){
               <input type="text" id="input2" class="form-control  text-white bg-black" maxlength="1" placeholder="Search by Letter">
           </div>
         </div>
-        <div class="row g-4  pt-2 rowData mt-2">
+        <div class="row g-4  pt-2 rowData ms-3 mt-2">
              
         </div>
 
@@ -984,10 +978,63 @@ function displaySearchName(){
       
       rowData.innerHTML = box;
       
-      let mealDivs = document.querySelectorAll(".innerCol");
-      mealDivs.forEach((div, index) => {
+      let lk = document.querySelectorAll(".innerCol");
+      lk.forEach((div,index) => {
+
         div.addEventListener("click", () => {
-          displayMealDetails(index);
+      
+          displaySearchMeal(meal[index].idMeal);
+          async function displaySearchMeal(id){
+            let mealId = id;
+            let apiResponse2 = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`);
+            let finalRlt2 = await apiResponse2.json();
+            let mealDetails = finalRlt2.meals[0];
+            let rowData = document.querySelector(".rowData");
+            
+            let ingredients = '';
+          
+          for (let i = 1; i <= 20; i++) {
+              const ingredient = mealDetails[`strIngredient${i}`];
+              const measure = mealDetails[`strMeasure${i}`];
+          
+              if (ingredient && ingredient.trim() !== '' && ingredient !== null) {
+                  ingredients += `<li class="alert alert-info m-2 p-1">${measure} ${ingredient}</li>`;
+              }
+          }
+          
+          let tags = mealDetails.strTags && mealDetails.strTags.trim() !== '' ? `<li class="alert alert-info p">${mealDetails.strTags}</li>` : '';
+          
+          const box = `
+          <div class="col-md-4">
+              <img src="${mealDetails.strMealThumb}" class="w-100 rounded-3" alt="">
+              <p class="fs-3 fw-bolder">${mealDetails.strCategory}</p>
+          </div> 
+          
+          <div class="col-md-8">
+              <h2>Instructions</h2>
+              <p>${mealDetails.strInstructions}</p>
+              <p class="fs-4 fw-bolder">Area: ${mealDetails.strArea}</p>
+              <p class="fs-4 fw-bolder">Category: ${mealDetails.strCategory}</p>
+              <p class="fs-4 fw-bolder">Recipes:</p>
+              <ul class="list-unstyled d-flex gap-2 flex-wrap"> 
+                  ${ingredients}
+              </ul>
+              <p>Tags:</p>
+              <ul class="list-unstyled d-flex gap-5"> 
+                  ${tags}
+              </ul>
+              <div class="d-flex gap-3">
+                  <a target="_blank" href="${mealDetails.strSource}" class="btn-danger btn">Source</a>
+                  <a target="_blank" href="${mealDetails.strYoutube}" class="btn btn-info">Youtube</a>
+              </div>
+          </div> 
+          `;
+          
+          rowData.innerHTML = box;
+    
+          }
+
         });
       });
+      
     }
