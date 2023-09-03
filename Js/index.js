@@ -392,7 +392,7 @@ function displayArea(){
   
   for (let i = 0; i < area.length; i++) {
     box += `
-    <div class="col-md-3 text-white text-center ms-4 ">
+    <div class="col-md-3 text-white text-center  ">
     
     <i class="fa-solid fa-house-laptop fa-4x" Area="${area[i].strArea} "></i>
     
@@ -433,7 +433,7 @@ let box = "";
 for (let i = 0; i < v.length; i++) {
   box += `
     <div class="col-md-3 rounded-4">
-      <div class="position-relative innerCol rounded-4  ms-4"  >
+      <div class="position-relative innerCol rounded-4  ms-2"  >
         <div class="rounded-4">
           <img src="${v[i].strMealThumb}" class="w-100 rounded-4"  alt="">
           <div class="layer rounded-4 position-absolute"areaId="${v[i].idMeal}" >
@@ -544,7 +544,7 @@ function displayIngredient(){
 
   for (let i = 0; i <20; i++) {
     box += `
-      <div class="col-md-3 text-white text-center  gy-1 gx-2 border border-secondary pt-3 ms-4">
+      <div class="col-md-3 text-white text-center  gy-1 gx-2 pt-3 ">
       
             <i class="fa-solid fa-drumstick-bite fa-4x"IngD="${Ing[i].strIngredient}" ></i>
 
@@ -578,7 +578,7 @@ let box = "";
 for (let i = 0; i < v.length; i++) {
   box += `
     <div class="col-md-3 rounded-4">
-      <div class="position-relative innerCol rounded-4 ms-4"  >
+      <div class="position-relative innerCol rounded-4 "  >
         <div class="rounded-4">
           <img src="${v[i].strMealThumb}" class="w-100 rounded-4"  alt="">
           <div class="layer rounded-4 position-absolute" >
